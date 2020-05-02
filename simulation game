@@ -1,0 +1,48 @@
+import random
+##    def getmoney():
+##        return int(input("enter amount to insert into slot machine:"))
+def random_words():
+    words=["cherries","oranges","plums","bells","melons","bars"]
+    choice1=random.choice(words)
+    choice2=random.choice(words)
+    choice3=random.choice(words)
+    return choice1,choice2,choice3
+def winning(money):
+    message=""
+    amount=0
+    choice1,choice2,choice3=random_words()
+    if choice1!=choice2!=choice3:
+        message="You have won $0".upper()
+        amount=money*0
+    elif choice1==choice2 or choice2==choice3 or choice1==choice3:
+        message="You have won two times the amount entered".upper()
+        amount=money*2
+    elif choice1==choice2==choice3:
+        message="You have won three times the amount entered".upper()
+        amount=money*3
+    return message,amount
+def startgame():
+    randomwords=random_words()
+    money=int(input("enter amount to insert into slot machine:"))
+    message,amount=winning(money)
+    print(message,"which is $:",amount)
+    total_money=0
+    total_amount=0
+    total_money+=money
+    total_amount+=amount
+    print("the money entered into the slot machine is",total_money)
+    print("the words chosen are",randomwords)
+    print("the amount won is",total_amount) 
+    while True:
+        play_again=input("would you like to play again")
+        if play_again=="yes".lower():
+            startgame()
+        elif play_again=="no".lower():
+            break
+   
+def main():
+    startgame()
+main()
+            
+            
+
