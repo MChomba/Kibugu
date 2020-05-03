@@ -1,6 +1,6 @@
 import random
-##    def getmoney():
-##        return int(input("enter amount to insert into slot machine:"))
+def getmoney():
+    return int(input("enter amount to insert into slot machine:"))
 def random_words():
     words=["cherries","oranges","plums","bells","melons","bars"]
     choice1=random.choice(words)
@@ -23,22 +23,23 @@ def winning(money):
     return message,amount
 def startgame():
     randomwords=random_words()
-    money=int(input("enter amount to insert into slot machine:"))
+    money=getmoney()
     message,amount=winning(money)
     print(message,"which is $:",amount)
-    total_money=0
-    total_amount=0
-    total_money+=money
-    total_amount+=amount
-    print("the money entered into the slot machine is",total_money)
-    print("the words chosen are",randomwords)
-    print("the amount won is",total_amount) 
+ 
     while True:
         play_again=input("would you like to play again")
         if play_again=="yes".lower():
             startgame()
         elif play_again=="no".lower():
             break
+        total_money=0
+    total_amount=0
+    total_money+=money
+    total_amount+=amount
+    print("the money entered into the slot machine is",total_money)
+    print("the words chosen are",randomwords)
+    print("the amount won is",total_amount)
    
 def main():
     startgame()
